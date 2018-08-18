@@ -1,6 +1,6 @@
 import numpy as np 
 from matplotlib import pyplot as plt 
-from sklearn.neighbors import KNeighborsClassifier
+from sklearn.naive_bayes import GaussianNB
 
 
 # data
@@ -11,7 +11,7 @@ xRed = np.array([3.3, 3.5, 4, 4.4, 5.7, 6])
 yRed = np.array([7, 1.5, 6.3, 1.9, 2.9, 7.1])
 
 X = ([ [0.3, 1], [0.5, 4.5], [1,2.3], [1.4, 1.9], [1.7, 8.9], [2, 4.1], [3.3, 7], [3.5, 1.5], [4, 6.3], [4.4, 1.9], [5.7, 2.9], [6, 7.1] ])
-Y = ([ 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1 ])
+Y = ([ 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1 ]) # 0: blue class , 1: Red Class
 
 plt.plot(xBlue, yBlue, 'ro', color='blue')
 plt.plot(xRed, yRed, 'ro', color='red')
@@ -19,11 +19,11 @@ plt.plot(xRed, yRed, 'ro', color='red')
 plt.plot(2, 5, 'ro', color='green', markersize=15)
 plt.axis([-0.5, 10, -0.5, 10])
 
-classifier = KNeighborsClassifier(n_neighbors=3)
+classifier = GaussianNB()
 classifier.fit(X, Y)
 
 pred = classifier.predict([[2, 5]])
-#pred = classifier.predict_proba(8) # Prints the probability of 87% 
+# pred = classifier.predict_proba(8) 
 print(pred)
 
 
